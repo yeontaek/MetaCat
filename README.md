@@ -1,6 +1,6 @@
 # Minimally Supervised Categorization of Text with Metadata
 
-This project provides a weakly-supervised framework for categorizing text with metadata.
+This project provides a weakly supervised framework for categorizing text with metadata.
 
 ## Installation
 
