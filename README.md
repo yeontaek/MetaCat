@@ -17,7 +17,7 @@ pip3 install -r requirements.txt
 ```
 
 ## Quick Start
-To reproduce the results in our paper, you need to first download the datasets [**here**](https://drive.google.com/file/d/1ktIzp1LR2DN-SMwNm91nYdyEoqhDBAE3/view?usp=sharing). Five datasets are used in our paper. The **GitHub-Sec** dataset, unfortunately, cannot be published due to our commitment to the data provider. The other four datasets are available. Once you unzip the downloaded file, you can see four folders related to these four datasets, respectively.
+To reproduce the results in our paper, you need to first download the [**datasets**](https://drive.google.com/file/d/1ktIzp1LR2DN-SMwNm91nYdyEoqhDBAE3/view?usp=sharing). Five datasets are used in our paper. The **GitHub-Sec** dataset, unfortunately, cannot be published due to our commitment to the data provider. The other four datasets are available. Once you unzip the downloaded file, you can see four folders related to these four datasets, respectively.
 
 | Dataset | Folder Name | #Documents | #Classes | Class name (#Repositories in this class) | 
 | ------------- |-------------| ----- | ---------- | --------- |
