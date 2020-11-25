@@ -70,11 +70,11 @@ In the Quick Start section, we include a pretrained embedding file in the downlo
 
 2. Prepare three files: (1) ```./${dataset}/doc_id.txt``` containing labeled document ids for each class. Each line begins with the class id (starting from ```0```), followed by a colon, and then document ids in the corpus (starting from ```0```) of the corresponding class separated by commas; (2) ```./${dataset}/dataset.csv```; and (3) ```./${dataset}/dataset.json```. 
 
-**You can refer to the example datasets ([doc_id/csv](https://drive.google.com/file/d/1ktIzp1LR2DN-SMwNm91nYdyEoqhDBAE3/view?usp=sharing) and [json](https://drive.google.com/file/d/130nPPXm0JHsS2EVg0e19SnTBc840tCLx/view?usp=sharing)) for the format.**
+**NOTE: You can refer to the example datasets ([doc_id/csv](https://drive.google.com/file/d/1ktIzp1LR2DN-SMwNm91nYdyEoqhDBAE3/view?usp=sharing) and [json](https://drive.google.com/file/d/130nPPXm0JHsS2EVg0e19SnTBc840tCLx/view?usp=sharing)) for the format.**
 
 3. ```cd gge/``` and then ```./embed.sh```. Make sure you have changed the dataset name. The embedding file will be saved to ```gge/embedding_gge```.
 
-**If there are new types of metadata (i.e., other than "user", "tags" and "product") in your dataset, you need to modify ```preprocess.py``` accordingly.**
+**NOTE: If there are new types of metadata (i.e., other than "user", "tags" and "product") in your dataset, you need to modify ```preprocess.py``` accordingly.**
 
 With the embedding file, you can train the classifier as mentioned in Quick Start (make sure you move it to ```${dataset}/```.
 Please always refer to the example datasets when adapting the code for a new dataset.
