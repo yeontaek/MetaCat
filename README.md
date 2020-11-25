@@ -26,7 +26,7 @@ To reproduce the results in our paper, you need to first download the [**dataset
 | [Amazon](http://jmcauley.ucsd.edu/data/amazon/index.html) | ```amazon/``` | 100,000 | 10 | Apps for Android (10,000), Books (10,000), CDs and Vinyl (10,000), Clothing, Shoes and Jewelry (10,000), Electronics (10,000), Health and Personal Care (10,000), Home and Kitchen (10,000), Movies and TV (10,000), Sports and Outdoors (10,000), Video Games (10,000)|
 | [Twitter](https://drive.google.com/file/d/0Byrzhr4bOatCRHdmRVZ1YVZqSzA/view) | ```twitter/``` | 135,619 | 9 | Food (34,387), Shop and Service (13,730), Travel and Transport (8,826), College and University (2,281), Nightlife Spot (15,082), Residence (1,678), Outdoors and Recreation (19,488), Arts and Entertainment (26,274), Professional Places (13,783) |
 
-You need to put the dataset folders under the repository main folder ```./```. Then the following running script can be used to run the model.
+You need to put these 4 dataset folders under the repository main folder ```./```. Then the following running script can be used to run the model.
 
 ```
 ./test.sh
