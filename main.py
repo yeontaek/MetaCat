@@ -1,8 +1,6 @@
 import numpy as np
 np.random.seed(1234)
 from time import time
-import os
-# os.environ["CUDA_VISIBLE_DEVICES"]="0"
 from model import WSTC, f1
 from keras.optimizers import SGD
 from gen import augment, pseudodocs
@@ -10,6 +8,10 @@ from load_data import load_dataset
 from gensim.models import word2vec
 from gensim.models import KeyedVectors
 from sklearn import preprocessing
+
+import os
+os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 def normalize(v):
 	norm = np.linalg.norm(v)
