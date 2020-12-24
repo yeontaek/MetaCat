@@ -86,7 +86,7 @@ with open('node2id.txt', 'w') as fout:
 		fout.write(W+' '+str(node2id[W])+'\n')
 		fout.write('$CTXT_'+W+' '+str(node2id['$CTXT_'+W])+'\n')
 
-moduli = len(node2id)+1
+mod = len(node2id)+1
 win = 5
 edge = defaultdict(int)
 
@@ -115,37 +115,37 @@ with open(folder+args.dataset+'.json') as fin:
 					continue
 				id1 = node2id[sent[i]]
 				id2 = node2id['$CTXT_'+sent[j]]
-				edge[id1*moduli+id2] += 1
+				edge[id1*mod+id2] += 1
 
 		for i in range(len(sent)):
 			id1 = node2id[R]
 			id2 = node2id[sent[i]]
-			edge[id1*moduli+id2] += win
+			edge[id1*mod+id2] += win
 			
 		id1 = node2id[U]
 		id2 = node2id[R]
-		edge[id1*moduli+id2] += win * length
+		edge[id1*mod+id2] += win * length
 
 		if idx in doc_id:
 			id1 = node2id[L]
 			id2 = node2id[R]
-			edge[id1*moduli+id2] += win * length
+			edge[id1*mod+id2] += win * length
 
 		if args.dataset in ['bio', 'ai', 'twitter']:
 			Ts = ['$TAG_'+x.lower() for x in js['tags']]
 			for T in Ts:
 				id1 = node2id[R]
 				id2 = node2id[T]
-				edge[id1*moduli+id2] += win
+				edge[id1*mod+id2] += win
 
 		if args.dataset in ['amazon']:
 			P = '$PROD_'+js['product']
 			id1 = node2id[P]
 			id2 = node2id[R]
-			edge[id1*moduli+id2] += win * length
+			edge[id1*mod+id2] += win * length
 
 with open('edge.txt', 'w') as fout:
 	for e in edge:
-		id1 = e // moduli
-		id2 = e % moduli
+		id1 = e // mod
+		id2 = e % mod
 		fout.write(str(id1)+'\t'+str(id2)+'\t'+str(edge[e])+'\n')
