@@ -76,7 +76,7 @@ In the Quick Start section, we include a pretrained embedding file in the downlo
 
 **NOTE: If there are new types of metadata (i.e., other than "user", "tags" and "product") in your dataset, you need to modify ```preprocess.py``` accordingly.**
 
-With the embedding file, you can train the classifier as mentioned in Quick Start (make sure you move it to ```${dataset}/```.
+With the embedding file, you can train the classifier as mentioned in Quick Start (make sure you move the embedding file ```embedding_gge``` to ```${dataset}/```.
 Please always refer to the example datasets when adapting the code for a new dataset.
 
 ## Citation
