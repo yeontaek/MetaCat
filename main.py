@@ -65,20 +65,20 @@ if __name__ == "__main__":
 									 formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 	
 	### Basic settings ###
-	# dataset selection: GitHub-Bio, GitHub-AI, GitHub-Cyber, Twitter, Amazon
+	# dataset selection: GitHub-Bio (default), GitHub-AI, GitHub-Cyber, Twitter, Amazon
 	parser.add_argument('--dataset', default='bio', choices=['ai', 'bio', 'cyber', 'twitter', 'amazon'])
-	# weak supervision selection: label surface names (default), class-related keywords and labeled documents
-	parser.add_argument('--sup_source', default='labels', choices=['labels', 'keywords', 'docs'])
+	# weak supervision selection: labeled documents (default)
+	parser.add_argument('--sup_source', default='docs', choices=['docs'])
 	# whether ground truth labels are available for evaluation: True (default), False
 	parser.add_argument('--with_evaluation', default='True', choices=['True', 'False'])
-	# embedding files
+	# embedding files: generation-guided embedding (default)
 	parser.add_argument('--embedding', default='gge')
 
 	### Training settings ###
 	# mini-batch size for both pre-training and self-training: 256 (default)
 	parser.add_argument('--batch_size', default=256, type=int)
-	# maximum self-training iterations: 5000 (default)
-	parser.add_argument('--maxiter', default=5e3, type=int)
+	# maximum self-training iterations: 0 (default)
+	parser.add_argument('--maxiter', default=0, type=int)
 	# pre-training epochs: None (default)
 	parser.add_argument('--pretrain_epochs', default=None, type=int)
 	# self-training update interval: None (default)
