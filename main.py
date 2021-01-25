@@ -1,3 +1,6 @@
+# The code structure is adapted from the WeSTClass implementation
+# https://github.com/yumeng5/WeSTClass
+
 import numpy as np
 np.random.seed(1234)
 from time import time
