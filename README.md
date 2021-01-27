@@ -17,7 +17,7 @@ pip3 install -r requirements.txt
 ```
 
 ## Quick Start
-To reproduce the results in our paper, you need to first download the [**datasets**](https://drive.google.com/file/d/1ktIzp1LR2DN-SMwNm91nYdyEoqhDBAE3/view?usp=sharing). Five datasets are used in our paper. The **GitHub-Sec** dataset, unfortunately, cannot be published due to our commitment to the data provider. The other four datasets are available. Once you unzip the downloaded file, you can see four folders related to these four datasets, respectively.
+To reproduce the results in our paper, you need to first download the [**datasets**](https://drive.google.com/file/d/1ktIzp1LR2DN-SMwNm91nYdyEoqhDBAE3/view?usp=sharing). Five datasets are used in our paper. The **GitHub-Sec** dataset, unfortunately, cannot be published due to our commitment to the data provider. The other four datasets are available. Once you unzip the downloaded file, you can see four folders corresponding to these four datasets, respectively.
 
 | Dataset | Folder Name | #Documents | #Classes | Class name (#Repositories in this class) | 
 | ------------- |-------------| ----- | ---------- | --------- |
@@ -41,42 +41,63 @@ Besides the "input" version mentioned in the Quick Start section, we also provid
 For **GitHub-Bio**, **GitHub-AI**, and **Twitter**, the json format is as follows:
 ```
 {
-  "user": "86372688",
-  "tags": [
-    "#PurityVodka",
-    "#NewYorkCity"
+  "user": [
+    "Natsu6767"
   ],
-  "text": "purityvodka hudsonmalone newyorkcity hudson malone",
-  "label": "Food"
+  "text": "pytorch implementation of dcgan trained on the celeba dataset ...",
+  "tags": [
+    "pytorch",
+    "dcgan",
+    "gan",
+    "implementation",
+    "deeplearning",
+    "computer-vision",
+    "generative-model"
+  ],
+  "label": 0,
+  "label_name": "$Image-Generation"
 }
 ```
-Here, "user" is global metadata; "tags" are local metadata. (Please refer to our [paper](https://arxiv.org/abs/2005.00624) for the definitions of global and local metadata.)
+Here, the "user" field is global metadata; the "tags" field is local metadata. (Please refer to our [paper](https://arxiv.org/abs/2005.00624) for the definitions of global and local metadata.)
 
 For **Amazon**, the json format is as follows:
 ```
 {
-  "user": "A1N4O8VOJZTDVB",
-  "product": "B004A9SDD8",
-  "text": "really cute loves the song , so he really could n't wait to play this . ... ",
-  "label": "Apps_for_Android"
+  "user": [
+    "A1N4O8VOJZTDVB"
+  ],
+  "text": "really cute loves the song so he really could n t wait to play this a little less interesting for him so he does n t play long but he is almost 3 and likes to play the older games but really cute for a younger child",
+  "product": [
+    "B004A9SDD8"
+  ],
+  "label": 0,
+  "label_name": "Apps_for_Android"
 }
 ```
-Here, "user" and "product" are global metadata; there is no local metadata in the Amazon dataset.
+Here, both "user" and "product" are global metadata; there is no local metadata in the Amazon dataset.
+
+**NOTE: If you would like to run our code on your own dataset, when you prepare this json file, make sure: (1) For each document, its metadata field is always represented by a list. For example, the "user" field should be \["A1N4O8VOJZTDVB"\] instead of "A1N4O8VOJZTDVB". (2) The "label" field is an integer. If you have N classes, the label space should be 0, 1, ..., N-1. The "label_name" field is optional.**
 
 ## Running New Datasets
 In the Quick Start section, we include a pretrained embedding file in the downloaded folders. If you have a new dataset, you need to rerun our generation-guided embedding module to get your own embedding files. Please follow the steps below.
 
 1. Create a directory named ```${dataset}``` under the main folder (e.g., ```./bio```).
 
-2. Prepare three files: (1) ```./${dataset}/doc_id.txt``` containing labeled document ids for each class. Each line begins with the class id (starting from ```0```), followed by a colon, and then document ids in the corpus (starting from ```0```) of the corresponding class separated by commas; (2) ```./${dataset}/dataset.csv```; and (3) ```./${dataset}/dataset.json```, **make sure you list documents in the order of class id (i.e., first list all the documents with label 0, then those with label 1, etc.).** 
+2. Prepare three files:            
+(1) ```./${dataset}/doc_id.txt``` containing labeled document ids for each class. Each line begins with the class id (starting from ```0```), followed by a colon, and then document ids in the corpus (starting from ```0```) of the corresponding class separated by commas.        
+(2) ```./${dataset}/dataset.json```. You can refer to the provided [json files](https://drive.google.com/file/d/130nPPXm0JHsS2EVg0e19SnTBc840tCLx/view?usp=sharing) for the format. **Make sure it has two fields "text" and "label" ("label" should be an integer in 0, 1, ..., N-1, corresponding to the classes in ```./${dataset}/doc_id.txt```). You can add your own metadata fields in the json.**            
+(3) ```./${dataset}/meta_dict.json``` indicating the names of your global/local metadata fields. For example, for GitHub-Bio, GitHub-AI, and Twitter, it should be
+```
+{"global": ["user"], "local": ["tags"]}
+```
+For Amazon, it should be
+```
+{"global": ["user", "product"], "local": []}
+```
 
-**NOTE: You can refer to the example datasets ([doc_id/csv](https://drive.google.com/file/d/1ktIzp1LR2DN-SMwNm91nYdyEoqhDBAE3/view?usp=sharing) and [json](https://drive.google.com/file/d/130nPPXm0JHsS2EVg0e19SnTBc840tCLx/view?usp=sharing)) for the format.**
+3. ```./prep_emb.sh```. Make sure you have changed the dataset name. The embedding file will be saved to ```./${dataset}/embedding_gge```.
 
-3. ```cd gge/``` and then ```./embed.sh```. Make sure you have changed the dataset name. The embedding file will be saved to ```gge/embedding_gge```.
-
-**NOTE: If there are new types of metadata (i.e., other than "user", "tags" and "product") in your dataset, you need to modify ```preprocess.py``` accordingly.**
-
-With the embedding file, you can train the classifier as mentioned in Quick Start (make sure you move the embedding file ```embedding_gge``` to ```${dataset}/```.
+With the embedding file, you can train the classifier as mentioned in Quick Start (i.e., ```./test.sh```).
 Please always refer to the example datasets when adapting the code for a new dataset.
 
 ## Citation
