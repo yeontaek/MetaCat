@@ -87,7 +87,7 @@ In the Quick Start section, we include a pretrained embedding file in the downlo
 
 (1) ```./${dataset}/doc_id.txt``` containing labeled document ids for each class. Each line begins with the class id (starting from ```0```), followed by a colon, and then document ids in the corpus (starting from ```0```) of the corresponding class separated by commas. 
 
-(2) ```./${dataset}/dataset.json```. You can refer to the provided [json files](https://drive.google.com/file/d/130nPPXm0JHsS2EVg0e19SnTBc840tCLx/view?usp=sharing) for the format. **Make sure it has two fields "text" and "label" ("label" should be an integer in 0, 1, ..., N-1, corresponding to the classes in ```./${dataset}/doc_id.txt```). You can add your own metadata fields in the json.**            
+(2) ```./${dataset}/dataset.json```. You can refer to the provided [json files](https://drive.google.com/file/d/130nPPXm0JHsS2EVg0e19SnTBc840tCLx/view?usp=sharing) for the format. **Make sure it has two fields "text" and "label".** ("label" should be an integer in 0, 1, ..., N-1, corresponding to the classes in ```./${dataset}/doc_id.txt```.) **You can add your own metadata fields in the json.**            
 
 (3) ```./${dataset}/meta_dict.json``` indicating the names of your global/local metadata fields. For example, for GitHub-Bio, GitHub-AI, and Twitter, it should be
 ```
