@@ -66,7 +66,7 @@ For **Amazon**, the json format is as follows:
   "user": [
     "A1N4O8VOJZTDVB"
   ],
-  "text": "really cute loves the song so he really could n t wait to play this a little less interesting for him so he does n t play long but he is almost 3 and likes to play the older games but really cute for a younger child",
+  "text": "really cute loves the song so he really could ...",
   "product": [
     "B004A9SDD8"
   ],
@@ -83,9 +83,12 @@ In the Quick Start section, we include a pretrained embedding file in the downlo
 
 1. Create a directory named ```${dataset}``` under the main folder (e.g., ```./bio```).
 
-2. Prepare three files:            
-(1) ```./${dataset}/doc_id.txt``` containing labeled document ids for each class. Each line begins with the class id (starting from ```0```), followed by a colon, and then document ids in the corpus (starting from ```0```) of the corresponding class separated by commas.        
+2. Prepare three files: 
+
+(1) ```./${dataset}/doc_id.txt``` containing labeled document ids for each class. Each line begins with the class id (starting from ```0```), followed by a colon, and then document ids in the corpus (starting from ```0```) of the corresponding class separated by commas. 
+
 (2) ```./${dataset}/dataset.json```. You can refer to the provided [json files](https://drive.google.com/file/d/130nPPXm0JHsS2EVg0e19SnTBc840tCLx/view?usp=sharing) for the format. **Make sure it has two fields "text" and "label" ("label" should be an integer in 0, 1, ..., N-1, corresponding to the classes in ```./${dataset}/doc_id.txt```). You can add your own metadata fields in the json.**            
+
 (3) ```./${dataset}/meta_dict.json``` indicating the names of your global/local metadata fields. For example, for GitHub-Bio, GitHub-AI, and Twitter, it should be
 ```
 {"global": ["user"], "local": ["tags"]}
