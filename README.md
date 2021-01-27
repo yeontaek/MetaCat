@@ -68,7 +68,7 @@ In the Quick Start section, we include a pretrained embedding file in the downlo
 
 1. Create a directory named ```${dataset}``` under the main folder (e.g., ```./bio```).
 
-2. Prepare three files: (1) ```./${dataset}/doc_id.txt``` containing labeled document ids for each class. Each line begins with the class id (starting from ```0```), followed by a colon, and then document ids in the corpus (starting from ```0```) of the corresponding class separated by commas; (2) ```./${dataset}/dataset.csv```; and (3) ```./${dataset}/dataset.json```. 
+2. Prepare three files: (1) ```./${dataset}/doc_id.txt``` containing labeled document ids for each class. Each line begins with the class id (starting from ```0```), followed by a colon, and then document ids in the corpus (starting from ```0```) of the corresponding class separated by commas; (2) ```./${dataset}/dataset.csv```; and (3) ```./${dataset}/dataset.json```, **make sure you list documents in the order of class id (i.e., first list all the documents with label 0, then those with label 1, etc.).** 
 
 **NOTE: You can refer to the example datasets ([doc_id/csv](https://drive.google.com/file/d/1ktIzp1LR2DN-SMwNm91nYdyEoqhDBAE3/view?usp=sharing) and [json](https://drive.google.com/file/d/130nPPXm0JHsS2EVg0e19SnTBc840tCLx/view?usp=sharing)) for the format.**
 

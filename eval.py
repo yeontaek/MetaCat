@@ -1,10 +1,9 @@
 import string
 from sklearn.metrics import f1_score
 from sklearn.metrics import confusion_matrix
-
 import argparse
-parser = argparse.ArgumentParser(description='main', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
+parser = argparse.ArgumentParser(description='main', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('--dataset', default='bio', choices=['bio', 'ai', 'cyber', 'amazon', 'twitter'])
 args = parser.parse_args()
 dataset = args.dataset
@@ -19,7 +18,7 @@ y = []
 with open(dataset+'/dataset.csv') as fin:
 	for idx, line in enumerate(fin):
 		if idx not in train:
-			y.append(line.strip().split(',')[0][1:-1])
+			y.append(line.strip().split(',')[0])
 
 y_pred = []
 with open(dataset+'/out.txt') as fin:

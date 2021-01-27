@@ -40,7 +40,7 @@ def load_embedding(vocabulary_inv, num_class, dataset_name, embedding_name):
 	centers = [None for _ in range(num_class)]
 	for word in embedding_model.vocab:
 		if word.startswith('$LABL_'):
-			centers[int(word.split('$')[-1])] = embedding_model[word] / np.linalg.norm(embedding_model[word])
+			centers[int(word.split('_')[-1])] = embedding_model[word] / np.linalg.norm(embedding_model[word])
 
 	return embedding_weights, centers
 
@@ -113,17 +113,17 @@ if __name__ == "__main__":
 
 	
 	if args.dataset == 'bio':
-		max_sequence_length = 600
+		max_sequence_length = 1000
 		pretrain_epochs = 20
 		kappa = 120
 
 	elif args.dataset == 'ai':
-		max_sequence_length = 600
+		max_sequence_length = 1000
 		pretrain_epochs = 30
 		kappa = 120
 
 	elif args.dataset == 'cyber':
-		max_sequence_length = 800
+		max_sequence_length = 1000
 		pretrain_epochs = 20
 		kappa = 120
 
